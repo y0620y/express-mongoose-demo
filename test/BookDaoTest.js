@@ -5,7 +5,7 @@ const assert=require('assert')
 
 describe("测试BookDao",function () {
    before(function () {
-      mongoose.connect('mongodb://localhost/demo02',function (err) {
+      mongoose.connect('mongodb://localhost/demo02',{useMongoClient:true},function (err) {
 
       })
    })
@@ -18,6 +18,15 @@ describe("测试BookDao",function () {
         bookDao.addBook(book,function (nb) {
 
             assert.ok(nb._id!=null)
+            done()
+        })
+    })
+
+    it("修改一本书",function (done) {
+        let book={_id:'5e15dfdaafb94d1a88366d36',name:'john666',price: 300}
+        bookDao.updateBook(book._id,book,function (nb) {
+            assert.ok(nb._id!=null)
+            console.log(nb)
             done()
         })
     })

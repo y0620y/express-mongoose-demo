@@ -7,6 +7,13 @@ function addBook(book,callback) {
         if(!err) callback(newBookDoc.toObject())
     })
 }
+// 修改
+function updateBook(id,book,callback) {
+    var nb = {$set:book};
+    bookModel.findByIdAndUpdate(id,nb,function (err) {
+          if(!err) callback(book)
+      })
+  }
 
 function findAllBooks(callback) {
     bookModel.find({}).exec(function (err,books) {
@@ -20,4 +27,4 @@ function deleteBook(id,callback) {
    })
 }
 
-module.exports={addBook,deleteBook,findAllBooks}
+module.exports={addBook,deleteBook,findAllBooks,updateBook}

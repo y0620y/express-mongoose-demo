@@ -20,6 +20,14 @@ Content-Type: application/json
 
 ###
 
+put http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "_id":"5e15dfdaafb94d1a88366d36",
+  "name":"john6"
+}
+
 DELETE http://localhost:3000/books/5e15982a8db67b0dee224f90
 Accept: application/json
 
